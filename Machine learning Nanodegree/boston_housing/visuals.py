@@ -101,7 +101,7 @@ def ModelComplexity(X, y):
     pl.show()
 
 
-def PredictTrials(X, y, fitter, data):
+def PredictTrials(X, y, fitter, reg_in, param_grid, data):
     """ Performs trials of fitting and predicting data. """
 
     # Store the predicted prices
@@ -113,7 +113,7 @@ def PredictTrials(X, y, fitter, data):
             test_size = 0.2, random_state = k)
         
         # Fit the data
-        reg = fitter(X_train, y_train)
+        reg = fitter(X_train, y_train, reg_in, param_grid)
         
         # Make a prediction
         pred = reg.predict([data[0]])[0]
